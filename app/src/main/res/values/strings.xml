@@ -1,16 +1,12 @@
 <resources>
     <string name="app_name">MovieDB</string>
-    <string name="subtitle">Sub Title</string>
-    <string name="Title">Title</string>
     <string name="overview">Overview</string>
-    <string name="releaseDate">Release At</string>
-    <string name="originaltab">Original</string>
+    <string name="releaseDate">Released</string>
     <string name="genre">Genre</string>
     <string name="popularity">Popularity</string>
     <string name="voteCount">Rating</string>
     <string name="voteAverage">Vote Average</string>
     <string name="originalTitle">Original Title</string>
     <string name="originalLanguage">Original Language</string>
-    <string name="nowPlaying_toolbar">Now Playing</string>
     <string name="nonValue">-</string>
 </resources>

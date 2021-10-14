@@ -2,10 +2,13 @@ package com.example.moviedb.Views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,6 +29,7 @@ public class movieDetail_activity extends AppCompatActivity {
     private String movie_ID;
     private MovieViewModel movieViewModel;
     private RecyclerView rv_genre_movieDetail;
+    private Toolbar toolbar_movie_detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,7 @@ public class movieDetail_activity extends AppCompatActivity {
         setContentView(R.layout.activity_movie_detail);
 
         inisialisasi();
+        setToolbar();
 
         Intent i = getIntent();
         movie_ID= i.getStringExtra("movie_id");
@@ -45,36 +50,16 @@ public class movieDetail_activity extends AppCompatActivity {
         @Override
         public void onChanged(Movies movies) {
 
-            title_movie_detail.setText(movies.getTitle());
-            release_detail_movie.setText(movies.getRelease_date());
-            popularity_detail_movie.setText(String.valueOf(movies.getPopularity()));
-            voteAverage_movie_detail.setText(String.valueOf(movies.getVote_average()));
-            voteCount_movie_detail.setText(String.valueOf(movies.getVote_count())+" Peoples");
-            overviewText_movieDetails.setText(movies.getOverview());
-            originalTitle_movieDetail.setText("Original Title: "+movies.getOriginal_title());
-            originalLanguage_movieDetail.setText(movies.getOriginal_language());
+            setTextView(movies);
 
-            Glide.with(movieDetail_activity.this)
-                    .load(Const.IMAGE_PATH +movies.getPoster_path())
-                    .into(posterPath_movie_detail);
+            setImageView(movies);
 
-            Glide.with(movieDetail_activity.this)
-                    .load(Const.IMAGE_PATH +movies.getBackdrop_path())
-                    .into(bc_Path);
+            setRV_Genre(movies);
 
-            LinearLayoutManager horizontalLayoutManager
-                    = new LinearLayoutManager(movieDetail_activity.this,
-                    LinearLayoutManager.HORIZONTAL, false);
-
-            rv_genre_movieDetail.setLayoutManager(horizontalLayoutManager);
-            rvAdapter_genres_movieDetail adapter = new rvAdapter_genres_movieDetail(movieDetail_activity.this);
-            adapter.setListGenresAdapter(movies.getGenres());
-            rv_genre_movieDetail.setAdapter(adapter);
         }
     };
 
     private void inisialisasi() {
-
         title_movie_detail=findViewById(R.id.title_movie_detail);
         release_detail_movie=findViewById(R.id.release_detail_movie);
         popularity_detail_movie=findViewById(R.id.popularity_detail_movie);
@@ -86,8 +71,60 @@ public class movieDetail_activity extends AppCompatActivity {
         bc_Path=findViewById(R.id.bc_Path);
         originalTitle_movieDetail=findViewById(R.id.originalTitle_movieDetail);
         rv_genre_movieDetail=findViewById(R.id.rv_genre_movieDetail);
+        toolbar_movie_detail=findViewById(R.id.toolbar_movie_detail);
 
         movieViewModel=new ViewModelProvider(movieDetail_activity.this).get(MovieViewModel.class);
+    }
+
+    private void setToolbar(){
+        setSupportActionBar(toolbar_movie_detail);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setTitle("Movie Details");
+    }
+
+    private void setTextView(Movies movies){
+        title_movie_detail.setText(movies.getTitle());
+        release_detail_movie.setText(movies.getRelease_date());
+        popularity_detail_movie.setText(String.valueOf(movies.getPopularity()));
+        voteAverage_movie_detail.setText(String.valueOf(movies.getVote_average()));
+        voteCount_movie_detail.setText("from "+String.valueOf(movies.getVote_count())+" Peoples");
+        overviewText_movieDetails.setText(movies.getOverview());
+        originalTitle_movieDetail.setText("Original Title: "+movies.getOriginal_title());
+        originalLanguage_movieDetail.setText(movies.getOriginal_language());
+    }
+
+    private void setImageView(Movies movies){
+        Glide.with(movieDetail_activity.this)
+                .load(Const.IMAGE_PATH +movies.getPoster_path())
+                .into(posterPath_movie_detail);
+
+        Glide.with(movieDetail_activity.this)
+                .load(Const.IMAGE_PATH +movies.getBackdrop_path())
+                .into(bc_Path);
+    }
+
+    private void setRV_Genre(Movies movies){
+        LinearLayoutManager horizontalLayoutManager
+                = new LinearLayoutManager(movieDetail_activity.this,
+                LinearLayoutManager.HORIZONTAL, false);
+
+        rv_genre_movieDetail.setLayoutManager(horizontalLayoutManager);
+        rvAdapter_genres_movieDetail adapter = new rvAdapter_genres_movieDetail(movieDetail_activity.this);
+        adapter.setListGenresAdapter(movies.getGenres());
+        rv_genre_movieDetail.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

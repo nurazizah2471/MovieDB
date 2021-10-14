@@ -46,9 +46,10 @@ public class rvAdapter_nowPlaying_movieDetail extends RecyclerView.Adapter<rvAda
     @Override
     public void onBindViewHolder(@NonNull rvAdapter_nowPlaying_movieDetail.NowPlayingHolder holder, int position) {
         final NowPlaying.Results resultNowPlaying = getListNowPlaying().get(position);
-        holder.title_nowplaying.setText(resultNowPlaying.getTitle().toString()+ "ID: "+String.valueOf(resultNowPlaying.getId()));
-        holder.originalLanguage_nowplaying.setText(resultNowPlaying.getOriginal_language().toString());
-        holder.releaseDate_nowplaying.setText(resultNowPlaying.getRelease_date().toString());
+        holder.title_nowplaying.setText(resultNowPlaying.getTitle());
+        holder.overview_listNowPlaying.setText(resultNowPlaying.getOverview());
+        holder.rating_nowplaying.setText(String.valueOf(resultNowPlaying.getVote_average()));
+
         Glide.with(context)
                 .load(Const.IMAGE_PATH +resultNowPlaying.getPoster_path())
                 .into(holder.imagePoster_nowplaying);
@@ -70,7 +71,7 @@ public class rvAdapter_nowPlaying_movieDetail extends RecyclerView.Adapter<rvAda
 
     public class NowPlayingHolder extends RecyclerView.ViewHolder {
 
-        TextView title_nowplaying, originalLanguage_nowplaying, releaseDate_nowplaying;
+        TextView title_nowplaying, rating_nowplaying, overview_listNowPlaying;
         ImageView imagePoster_nowplaying;
         CardView card_nowplaying;
 
@@ -78,10 +79,10 @@ public class rvAdapter_nowPlaying_movieDetail extends RecyclerView.Adapter<rvAda
             super(itemView);
 
             title_nowplaying = itemView.findViewById(R.id.title_nowplaying);
-            originalLanguage_nowplaying = itemView.findViewById(R.id.originalLanguage_nowplaying);
-            releaseDate_nowplaying = itemView.findViewById(R.id.releaseDate_nowplaying);
+            rating_nowplaying = itemView.findViewById(R.id.rating_nowplaying);
             imagePoster_nowplaying = itemView.findViewById(R.id.imagePoster_nowplaying);
             card_nowplaying = itemView.findViewById(R.id.card_nowplaying);
+            overview_listNowPlaying=itemView.findViewById(R.id.overview_listNowPlaying);
         }
     }
 }

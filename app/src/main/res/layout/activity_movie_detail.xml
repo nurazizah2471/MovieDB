@@ -20,16 +20,17 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar_fragment_movie_detail"
+                android:id="@+id/toolbar_movie_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
+                android:background="#04146C"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="?attr/actionBarTheme"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="Movie Detail" />
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:titleTextColor="#FAE001" />
 
             <ImageView
                 android:id="@+id/bc_Path"
@@ -37,17 +38,17 @@
                 android:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_movie_detail"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_movie_detail"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <ImageView
                 android:id="@+id/posterPath_movie_detail"
                 android:layout_width="130dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="160dp"
+                android:layout_marginTop="130dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/toolbar_fragment_movie_detail"
+                app:layout_constraintTop_toBottomOf="@+id/toolbar_movie_detail"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
 
             <TextView
@@ -60,7 +61,7 @@
                 android:text="@string/nonValue"
                 android:textAlignment="center"
                 android:textColor="#FFEB3B"
-                android:textSize="20sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -84,10 +85,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="30dp"
+                android:layout_marginBottom="9dp"
                 android:text="@string/releaseDate"
                 android:textAlignment="center"
                 android:textColor="#FFEB3B"
+                android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/release_detail_movie"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/txtview3" />
 
@@ -109,10 +113,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:text="@string/popularity"
                 android:textAlignment="center"
                 android:textColor="#FFEB3B"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/originalTitle_movieDetail" />
@@ -123,10 +128,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="9dp"
                 android:text="@string/originalLanguage"
                 android:textAlignment="center"
                 android:textColor="#FFEB3B"
+                android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/originalLanguage_movieDetail"
                 app:layout_constraintEnd_toStartOf="@+id/txtview2"
                 app:layout_constraintStart_toEndOf="@+id/txtview3"
                 app:layout_constraintTop_toTopOf="@+id/txtview3" />
@@ -172,6 +180,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+                    <ImageView
+                        android:id="@+id/imageView2"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginTop="15dp"
+                        app:layout_constraintStart_toStartOf="@+id/overviewText_movieDetails"
+                        app:layout_constraintTop_toBottomOf="@+id/voteCount_movie_detail"
+                        app:srcCompat="@drawable/star" />
+
                     <TextView
                         android:id="@+id/textView2"
                         android:layout_width="0dp"
@@ -205,15 +222,14 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
                         android:text="@string/nonValue"
                         android:textAlignment="textStart"
                         android:textColor="#CAB818"
                         android:textSize="14sp"
                         android:textStyle="bold"
                         app:layout_constraintEnd_toEndOf="@+id/voteCount_movie_detail"
-                        app:layout_constraintStart_toStartOf="@+id/textView7"
-                        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                        app:layout_constraintStart_toEndOf="@+id/imageView2"
+                        app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
                     <TextView
                         android:id="@+id/voteCount_movie_detail"
@@ -258,7 +274,6 @@
                         android:id="@+id/rv_genre_movieDetail"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         app:layout_constraintEnd_toEndOf="@id/textView10"
                         app:layout_constraintStart_toStartOf="@id/textView10"
                         app:layout_constraintTop_toBottomOf="@+id/textView10" />

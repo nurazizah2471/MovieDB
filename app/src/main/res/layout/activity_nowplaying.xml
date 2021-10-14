@@ -8,16 +8,15 @@
     tools:context=".Views.NowPlaying_activity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_listNowPlaying"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#04146C"
+        android:background="#021687"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:title="@string/nowPlaying_toolbar"
         app:titleTextColor="#FAE001" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -27,5 +26,5 @@
         android:layout_marginTop="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_listNowPlaying" />
 </androidx.constraintlayout.widget.ConstraintLayout>
