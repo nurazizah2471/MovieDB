@@ -26,6 +26,7 @@ public class MovieRepository {
     }
 
     public MutableLiveData<Movies> getMovieData(String movie_id) {
+
         final MutableLiveData<Movies> result = new MutableLiveData<>();
 
         ApiService.endpoint().getMoviesById(Integer.parseInt(movie_id), Const.API_KEY).enqueue(new Callback<Movies>() {
@@ -43,6 +44,7 @@ public class MovieRepository {
     }
 
     public MutableLiveData<NowPlaying> getNowPlaying() {
+
         final MutableLiveData<NowPlaying> result = new MutableLiveData<>();
 
         ApiService.endpoint().getNowPlaying(Const.API_KEY).enqueue(new Callback<NowPlaying>() {

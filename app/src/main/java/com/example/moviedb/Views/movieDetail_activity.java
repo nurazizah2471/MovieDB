@@ -1,15 +1,15 @@
 package com.example.moviedb.Views;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.moviedb.R;
@@ -88,7 +88,6 @@ public class movieDetail_activity extends AppCompatActivity {
         rv_genre_movieDetail=findViewById(R.id.rv_genre_movieDetail);
 
         movieViewModel=new ViewModelProvider(movieDetail_activity.this).get(MovieViewModel.class);
-
     }
 
     @Override

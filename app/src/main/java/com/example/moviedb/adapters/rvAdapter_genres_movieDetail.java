@@ -23,6 +23,7 @@ public class rvAdapter_genres_movieDetail extends RecyclerView.Adapter<rvAdapter
     private List<Movies.Genres> getListGenres(){
         return listGenres;
     }
+
     public void setListGenresAdapter(List<Movies.Genres> listGenres){
         this.listGenres=listGenres;
     }

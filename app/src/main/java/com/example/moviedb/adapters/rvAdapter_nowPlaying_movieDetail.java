@@ -28,6 +28,7 @@ public class rvAdapter_nowPlaying_movieDetail extends RecyclerView.Adapter<rvAda
     private List<NowPlaying.Results> getListNowPlaying(){
         return listNowPlaying;
     }
+
     public void setListNowPlayingAdapter(List<NowPlaying.Results> listNowPlaying){
         this.listNowPlaying=listNowPlaying;
     }

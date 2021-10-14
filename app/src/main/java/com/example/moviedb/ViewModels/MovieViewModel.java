@@ -14,6 +14,7 @@ import com.example.moviedb.repositories.MovieRepository;
 public class MovieViewModel extends AndroidViewModel {
 
     private MovieRepository movieRepository;
+
     public MovieViewModel(@NonNull Application application) {
         super(application);
         movieRepository= MovieRepository.getInstance();
