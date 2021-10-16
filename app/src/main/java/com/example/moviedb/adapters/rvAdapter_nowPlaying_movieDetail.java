@@ -24,6 +24,7 @@ public class rvAdapter_nowPlaying_movieDetail extends RecyclerView.Adapter<rvAda
 
     private Context context;
     private List<NowPlaying.Results> listNowPlaying;
+    private Intent i;
 
     private List<NowPlaying.Results> getListNowPlaying(){
         return listNowPlaying;
@@ -57,9 +58,9 @@ public class rvAdapter_nowPlaying_movieDetail extends RecyclerView.Adapter<rvAda
         holder.card_nowplaying.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, movieDetail_activity.class);
-                intent.putExtra("movie_id", String.valueOf(resultNowPlaying.getId()));
-                context.startActivity(intent);
+                Intent i = new Intent(context, movieDetail_activity.class);
+                i.putExtra("movie_id", String.valueOf(resultNowPlaying.getId()));
+                context.startActivity(i);
             }
         });
     }

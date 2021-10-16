@@ -30,6 +30,7 @@ public class movieDetail_activity extends AppCompatActivity {
     private MovieViewModel movieViewModel;
     private RecyclerView rv_genre_movieDetail;
     private Toolbar toolbar_movie_detail;
+    private Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class movieDetail_activity extends AppCompatActivity {
         inisialisasi();
         setToolbar();
 
-        Intent i = getIntent();
+        i = getIntent();
         movie_ID= i.getStringExtra("movie_id");
 
         movieViewModel.getMovieById(movie_ID);
